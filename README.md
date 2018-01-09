@@ -18,6 +18,13 @@ Features:
 Follow [Docksal environment setup instructions](https://docs.docksal.io/en/master/getting-started/env-setup)
 
 ### Step #2: Project setup
+The simplest way of configuring env is to execute the following command in your Projects directory
+
+   ```
+   fin exec-url https://raw.githubusercontent.com/ApacheEx/d8-env/master/.docksal/commands/web-init
+   ```
+
+Otherwise you need to do:
 
 1. Clone this repo into your Projects directory
 
@@ -26,15 +33,22 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/en/maste
     cd d8
     ```
 
-2. Initialize the site
+2. Clone [drupal repo](https://www.drupal.org/project/drupal/git-instructions) into `docroot` directory
 
-    This will initialize phpunit settings and install the site via drush
+    ```
+    git clone --branch 8.5.x https://git.drupal.org/project/drupal.git docroot
+    cd docroot
+    ```
+
+3. Initialize the site
+
+    This will initialize some settings and install the site via drush
 
     ```
     fin init
     ```
 
-3. Point your browser to
+4. Point your browser to
 
     ```
     http://d8.docksal
