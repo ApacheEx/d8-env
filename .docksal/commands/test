@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+## Runs a PHPUnit specific method
+##
+## Usage: fin test [METHOD]
+## Arguments:
+## 1) METHOD - A specific php method or class name to test.
+
+# Abort if anything fails
+set -e
+
+# Set up path
+DOCROOT_PATH=${PROJECT_ROOT}/${DOCROOT}
+
+cd ${DOCROOT_PATH}/core
+fin exec "../vendor/bin/phpunit --verbose --filter=$1 --printer=\"\Drupal\Tests\Listeners\HtmlOutputPrinter\""
