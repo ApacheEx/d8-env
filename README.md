@@ -3,7 +3,7 @@ This is a pure Drupal 8 installation pre-configured for use with Docksal on Drup
 
 Features:
 
-- Drupal 8.5.x
+- Drupal 8.6.x
 - Install Drupal via `fin init`
 - Run PHPUnit tests via `fin test`
 - Apache 2.4 + MySQL 5.5 + PHP 7.1 + PhantomJs 2.1 + adminer
