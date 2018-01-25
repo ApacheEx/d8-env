@@ -13,4 +13,5 @@ set -e
 DOCROOT_PATH=${PROJECT_ROOT}/${DOCROOT}
 
 cd ${DOCROOT_PATH}/core
+fin exec phantomjs --ssl-protocol=any --ignore-ssl-errors=true ../vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768&
 fin exec "../vendor/bin/phpunit --verbose --filter=$1 --printer=\"\Drupal\Tests\Listeners\HtmlOutputPrinter\""

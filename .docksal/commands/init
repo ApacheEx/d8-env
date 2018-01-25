@@ -31,15 +31,14 @@ ver_to_int () {
 	echo "$@" | awk -F. '{ printf("%d%03d%03d", $1,$2,$3); }'
 }
 
-# Verify version
 if [[ $(ver_to_int $(fin -v)) < $(ver_to_int "${FIN_MIN_VERSION}") ]]; then
 	echo-red "Minimal fin version required is: ${FIN_MIN_VERSION}"
 	echo -e "Please run ${yellow}fin update${NC} and try again"
 	exit 1
 fi
 
-# Stack initialization
 echo -e "${green_bg} Step 1 ${NC}${green} Initializing stack...${NC}"
+
 if [[ ${DOCKER_RUNNING} == "true" ]]; then
 	fin reset -f
 else
@@ -58,14 +57,9 @@ chmod 755 ${SITEDIR_PATH}
 echo-yellow "Installing drupal..."
 DB_URL=$(fin exec -T printenv SIMPLETEST_DB)
 cd ${DOCROOT_PATH}
+cp core/phpunit.xml.dist core/phpunit.xml
 fin exec drush site-install -y --site-name='Drupal 8' --db-url=${DB_URL}
 
-echo-yellow "Starting phantomjs..."
-cd ${DOCROOT_PATH}
-cp core/phpunit.xml.dist core/phpunit.xml
-fin exec phantomjs --ssl-protocol=any --ignore-ssl-errors=true vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768&
-
-# Finish
 echo -en "${green_bg} Done ${NC} "
 echo -e "Open ${yellow}http://${VIRTUAL_HOST}${NC} in your browser to verify the setup."
 exit 0
