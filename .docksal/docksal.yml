@@ -10,8 +10,10 @@ services:
       - SIMPLETEST_DB=mysql://${MYSQL_USER:-user}:${MYSQL_PASSWORD:-user}@db/${MYSQL_DATABASE:-default}
       - BROWSERTEST_OUTPUT_DIRECTORY=/var/www/${DOCROOT:-docroot}/sites/default/files/simpletest
   adminer:
-    image: adminer
-    ports:
-      - "8081:8080"
+    image: ${ADMINER_IMAGE:-adminer}
     labels:
       - io.docksal.virtual-host=pma.${VIRTUAL_HOST}
+      - io.docksal.virtual-port=8081
+    dns:
+      - ${DOCKSAL_DNS1}
+      - ${DOCKSAL_DNS2}
