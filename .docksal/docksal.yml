@@ -2,18 +2,24 @@ version: "2.1"
 
 services:
   cli:
-    image: ${COMPOSE_PROJECT_NAME_SAFE}_cli
-    build: ${PROJECT_ROOT}/.docksal/services/cli
     environment:
       - PHP_IDE_CONFIG=serverName=${VIRTUAL_HOST}
       - SIMPLETEST_BASE_URL=http://${VIRTUAL_HOST}
-      - SIMPLETEST_DB=mysql://${MYSQL_USER:-user}:${MYSQL_PASSWORD:-user}@db/${MYSQL_DATABASE:-default}
-      - BROWSERTEST_OUTPUT_DIRECTORY=/var/www/${DOCROOT:-docroot}/sites/default/files/simpletest
+      - SIMPLETEST_DB=sqlite://localhost/sites/default/files/.ht.sqlite
+      - MINK_DRIVER_ARGS_WEBDRIVER=["chrome", null, "http://selenium.${VIRTUAL_HOST}/wd/hub"]
   adminer:
     image: ${ADMINER_IMAGE:-adminer}
     labels:
       - io.docksal.virtual-host=pma.${VIRTUAL_HOST}
       - io.docksal.virtual-port=8081
+    dns:
+      - ${DOCKSAL_DNS1}
+      - ${DOCKSAL_DNS2}
+  selenium:
+    image: ${SELENIUM_IMAGE:-selenium/standalone-chrome}
+    labels:
+      - io.docksal.virtual-host=selenium.${VIRTUAL_HOST},selenium.${VIRTUAL_HOST}.*
+      - io.docksal.virtual-port=4444
     dns:
       - ${DOCKSAL_DNS1}
       - ${DOCKSAL_DNS2}

@@ -55,7 +55,7 @@ echo-yellow "Making site directory writable..."
 chmod 755 ${SITEDIR_PATH}
 
 echo-yellow "Installing drupal..."
-DB_URL=$(fin exec -T printenv SIMPLETEST_DB)
+DB_URL=mysql://${MYSQL_USER:-user}:${MYSQL_PASSWORD:-user}@db/${MYSQL_DATABASE:-default}
 cd ${DOCROOT_PATH}
 cp core/phpunit.xml.dist core/phpunit.xml
 fin exec drush site-install -y --site-name='Drupal 8' --db-url=${DB_URL}
