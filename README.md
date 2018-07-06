@@ -6,7 +6,7 @@ Features:
 - Drupal 8.6.x
 - Install Drupal via `fin init`
 - Run PHPUnit tests via `fin test`
-- Apache 2.4 + MySQL 5.5 + PHP 7.1 + PhantomJs 2.1 + adminer
+- Apache 2.4 + MySQL 5.5 + PHP 7.1 + Selenium Server + adminer
 - PHP and MySQL settings overrides [examples](.docksal/etc)
 
 You can find more info on [wiki-page](https://github.com/ApacheEx/d8-env/wiki).
