@@ -12,7 +12,7 @@ DOCROOT_PATH=${PROJECT_ROOT}/${DOCROOT}
 SITEDIR_PATH=${DOCROOT_PATH}/sites/default
 
 # Fix fin version
-FIN_MIN_VERSION=1.60.0
+FIN_MIN_VERSION=1.69.1
 
 # Console colors
 red='\033[0;31m'
