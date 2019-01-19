@@ -12,7 +12,7 @@ DOCROOT_PATH=${PROJECT_ROOT}/${DOCROOT}
 SITEDIR_PATH=${DOCROOT_PATH}/sites/default
 
 # Fix fin version
-FIN_MIN_VERSION=1.69.1
+FIN_MIN_VERSION=1.80.1
 
 # Console colors
 red='\033[0;31m'
@@ -49,7 +49,7 @@ echo -e "${green_bg} Step 2 ${NC}${green} Initializing site...${NC}"
 
 echo-yellow "Installing composer dependencies..."
 cd ${DOCROOT_PATH}
-fin exec composer install
+fin composer install
 
 echo-yellow "Making site directory writable..."
 chmod 755 ${SITEDIR_PATH}
