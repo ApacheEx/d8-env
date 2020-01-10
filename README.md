@@ -6,7 +6,7 @@ Features:
 - Drupal 8.8.x
 - Install Drupal via `fin init`
 - Run PHPUnit tests via `fin test`
-- Apache 2.4 + MySQL 5.7 + PHP 7.3 + Selenium Server + Adminer
+- Apache 2.4 + MySQL 5.7 + PHP 7.2 + Selenium Server + Adminer
 - PHP and MySQL settings overrides [examples](.docksal/etc)
 
 You can find more info on [wiki-page](https://github.com/ApacheEx/d8-env/wiki).
