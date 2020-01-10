@@ -41,6 +41,6 @@ echo -e "${green_bg} INIT ${NC}${green} Cloning repository...${NC}"
 
 git clone -b master https://github.com/ApacheEx/d8-env.git d8 && \
     cd d8 && \
-    git clone --branch 8.7.x https://git.drupal.org/project/drupal.git docroot && \
+    git clone --branch 8.8.x https://git.drupalcode.org/project/drupal.git docroot && \
     cd docroot && \
     fin init
