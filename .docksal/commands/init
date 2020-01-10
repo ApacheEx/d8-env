@@ -11,31 +11,14 @@ set -e
 DOCROOT_PATH=${PROJECT_ROOT}/${DOCROOT}
 SITEDIR_PATH=${DOCROOT_PATH}/sites/default
 
-# Fix fin version
-FIN_MIN_VERSION=1.80.1
-
 # Console colors
-red='\033[0;31m'
 green='\033[0;32m'
 green_bg='\033[42m'
 yellow='\033[1;33m'
 NC='\033[0m'
 
 # Helper functions
-echo-red () { echo -e "${red}$1${NC}"; }
 echo-yellow () { echo -e "${yellow}$1${NC}"; }
-
-# Convert version string like 1.2.3 to integer for comparison
-# param $1 version string of 3 components max (e.g. 1.10.3)
-ver_to_int () {
-	echo "$@" | awk -F. '{ printf("%d%03d%03d", $1,$2,$3); }'
-}
-
-if [[ $(ver_to_int $(fin -v)) < $(ver_to_int "${FIN_MIN_VERSION}") ]]; then
-	echo-red "Minimal fin version required is: ${FIN_MIN_VERSION}"
-	echo -e "Please run ${yellow}fin update${NC} and try again"
-	exit 1
-fi
 
 echo -e "${green_bg} Step 1 ${NC}${green} Initializing stack...${NC}"
 
